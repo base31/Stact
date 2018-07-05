@@ -1,0 +1,1142 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Hackaton
+  description: >-
+    # Introduction
+
+    What does your API do?
+
+
+    # Overview
+
+    Things that the developers should know about
+
+
+    # Authentication
+
+    What is the preferred way of using the API?
+
+
+    # Error Codes
+
+    What errors and status codes can a user expect?
+
+
+    # Rate limit
+
+    Is there a limit to the number of requests an user can send?
+host: rest.nexmo.com
+basePath: /sms
+securityDefinitions:
+  auth:
+    type: oauth2
+    flow: implicit
+    authorizationUrl: https://rest.nexmo.com/sms
+    scopes: {}
+    x-skip-client-authentication: false
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /json:
+    post:
+      description: 'TODO: Add Description'
+      summary: Send SMS
+      tags:
+      - Nexmo API's
+      operationId: JsonPost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: api_key
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: to
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: from
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: text
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /json
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&to={{nexmo_phoneNr}}&from="NEXMO"&text="Hello from Nexmo"
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Send SMS
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /verify/json:
+    post:
+      description: 'TODO: Add Description'
+      summary: Verify Step 1
+      tags:
+      - Nexmo API's
+      operationId: VerifyJsonPost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: api_key
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: number
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: brand
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /verify/json
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&number={{nexmo_phoneNr}}&brand="NexmoVerifyTest"
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Verify Step 1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /verify/check/json:
+    post:
+      description: 'TODO: Add Description'
+      summary: Verify Step 2
+      tags:
+      - Nexmo API's
+      operationId: VerifyCheckJsonPost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: api_key
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: request_id
+        in: formData
+        required: true
+        type: string
+        description: request_id recieved in step 1
+      - name: code
+        in: formData
+        required: true
+        type: string
+        description: code recieved by SMS
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /verify/check/json
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&request_id={{nexmo_request_id}}&code=3057
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Verify Step 2
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /ni/advanced/json:
+    post:
+      description: 'TODO: Add Description'
+      summary: Number insight
+      tags:
+      - Nexmo API's
+      operationId: NiAdvancedJsonPost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: api_key
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: number
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /ni/advanced/json
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&number={{nexmo_phoneNr}}
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Number insight
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /messaging/sms-kpn/v1/send:
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api-prd.kpn.com/messaging/sms-kpn
+      tags:
+      - SMS
+      operationId: MessagingSmsKpnV1SendPost
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1apiPrd.kpn.com~1messaging~1smsKpnrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /messaging/sms-kpn/v1/send
+          headers:
+            Content-Type: application/json
+          body: '{"messages":[{"content":"Greetings from Apigee!","mobile_number":"+31624577981"}],"sender":"KPN"}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api-prd.kpn.com/messaging/sms-kpn
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /ai/image-classifier/v1/classify:
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api-prd.kpn.com/ai/image-classifier/v1/classify
+      tags:
+      - Image Classifier
+      operationId: AiImageClassifierV1ClassifyPost
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Https:~1~1apiPrd.kpn.com~1ai~1imageClassifier~1v1~1classifyrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /ai/image-classifier/v1/classify
+          headers:
+            Content-Type: application/json
+          body: '{"data":[{"ext":"jpg","path":"http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg"},{"ext":"jpg","path":"https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg"}]}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api-prd.kpn.com/ai/image-classifier/v1/classify
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /contact-center/kds/v1/agents:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml
+      tags:
+      - Dashboard
+      operationId: ContactCenterKdsV1AgentsGet
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /contact-center/kds/v1/agents?Content-Type=xml
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /oauth/client_credential/accesstoken:
+    post:
+      description: 'TODO: Add Description'
+      summary: GetAccessToken
+      tags:
+      - Contexta
+      operationId: OauthClientCredentialAccesstokenPost2
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: grant_type
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: client_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: client_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /oauth/client_credential/accesstoken?grant_type=client_credentials
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: client_id={{contexta_client_id}}&client_secret={{contexta_client_secret}}
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: GetAccessToken
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/conversations/contacts:
+    get:
+      description: 'TODO: Add Description'
+      summary: Retrieve a list of Conversations with Contacts
+      tags:
+      - Conversations
+      operationId: HealthmessengerV1ConversationsContactsGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /healthmessenger/v1/conversations/contacts
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Retrieve a list of Conversations with Contacts
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/conversations/coworkers:
+    get:
+      description: 'TODO: Add Description'
+      summary: Retrieve a list of Conversations with Coworkers
+      tags:
+      - Conversations
+      operationId: HealthmessengerV1ConversationsCoworkersGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /healthmessenger/v1/conversations/coworkers
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Retrieve a list of Conversations with Coworkers
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/conversations/{hm_conversation_id}:
+    get:
+      description: 'TODO: Add Description'
+      summary: Retrieve a single Conversation
+      tags:
+      - Conversations
+      operationId: HealthmessengerV1ConversationsByHmConversationIdGet
+      produces:
+      - application/json
+      parameters:
+      - name: hm_conversation_id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    put:
+      description: 'TODO: Add Description'
+      summary: Update fields of the Conversation
+      tags:
+      - Conversations
+      operationId: HealthmessengerV1ConversationsByHmConversationIdPut
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/UpdateFieldsOfTheConversationrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: hm_conversation_id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/conversations/{hm_conversation_id}/attachments:
+    post:
+      description: 'TODO: Add Description'
+      summary: Post a Message with Attachments
+      tags:
+      - Conversations
+      operationId: HealthmessengerV1ConversationsAttachmentsByHmConversationIdPost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: message
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: files
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: hm_conversation_id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/conversations/{hm_conversation_id}/messages:
+    post:
+      description: 'TODO: Add Description'
+      summary: Post a Message in the specified Conversation Copy
+      tags:
+      - Conversations
+      operationId: HealthmessengerV1ConversationsMessagesByHmConversationIdPost
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/PostAMessageInTheSpecifiedConversationCopyrequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: hm_conversation_id
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/users:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api-prd.kpn.com/healthmessenger/v1/users
+      tags:
+      - Users
+      operationId: HealthmessengerV1UsersGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /healthmessenger/v1/users
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api-prd.kpn.com/healthmessenger/v1/users
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /healthmessenger/v1/me/coworkers:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://api-prd.kpn.com/healthmessenger/v1/me
+      tags:
+      - HealthMessenger
+      operationId: HealthmessengerV1MeCoworkersGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /healthmessenger/v1/me/coworkers
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api-prd.kpn.com/healthmessenger/v1/me
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /7bffced0-76a5-478c-abf4-38993a51598e:
+    post:
+      description: 'TODO: Add Description'
+      summary: http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598e
+      tags:
+      - Demo
+      operationId: 7bffced076a5478cAbf438993a51598ePost
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/Http:~1~1webhook.site~17bffced076a5478cAbf438993a51598erequest'
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /7bffced0-76a5-478c-abf4-38993a51598e
+          headers:
+            Content-Type: application/json
+          body: '{"message":"OK"}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598e
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /decoders:
+    get:
+      description: 'TODO: Add Description'
+      summary: https://speechapi.contextaservices.com/decoders
+      tags:
+      - Contexta
+      operationId: DecodersGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /decoders
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://speechapi.contextaservices.com/decoders
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /communication/contexta/speech/v1/decoders:
+    get:
+      description: 'TODO: Add Description'
+      summary: ListDecoders
+      tags:
+      - Contexta
+      operationId: CommunicationContextaSpeechV1DecodersGet
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /communication/contexta/speech/v1/decoders
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: ListDecoders
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /communication/contexta/speech/v1/transcripts/create:
+    post:
+      description: 'TODO: Add Description'
+      summary: CreateTranscripts
+      tags:
+      - Contexta
+      operationId: CommunicationContextaSpeechV1TranscriptsCreatePost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: callbackurl
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: data
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: audio
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: decoder
+        in: formData
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /communication/contexta/speech/v1/transcripts/create
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: callbackurl=http://webhook.site/eea4f1f6-97f3-46f1-aed2-f8fabd5f631a&data={"message":"OK"}&audio=&decoder=5b16b7c7fb6fc02bcb8ec28e
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: CreateTranscripts
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /communication/contexta/speech/v1/transcripts/status/{contexta_transcriptId}:
+    get:
+      description: 'TODO: Add Description'
+      summary: GetTranscriptsStatus
+      tags:
+      - Contexta
+      operationId: CommunicationContextaSpeechV1TranscriptsStatusByContextaTranscriptIdGet
+      produces:
+      - application/json
+      parameters:
+      - name: contexta_transcriptId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /communication/contexta/speech/v1/transcripts/show/{contexta_transcriptId}:
+    get:
+      description: 'TODO: Add Description'
+      summary: GetTranscriptsXml
+      tags:
+      - Contexta
+      operationId: CommunicationContextaSpeechV1TranscriptsShowByContextaTranscriptIdGet
+      produces:
+      - application/json
+      parameters:
+      - name: contexta_transcriptId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+definitions:
+  Https://apiPrd.kpn.com/messaging/smsKpnrequest:
+    title: https://api-prd.kpn.com/messaging/sms-kpnRequest
+    example:
+      messages:
+      - content: Greetings from Apigee!
+        mobile_number: +31624577981
+      sender: KPN
+    type: object
+    properties:
+      messages:
+        description: ''
+        example:
+        - content: Greetings from Apigee!
+          mobile_number: +31624577981
+        type: array
+        items:
+          $ref: '#/definitions/Message'
+      sender:
+        description: ''
+        example: KPN
+        type: string
+    required:
+    - messages
+    - sender
+  Message:
+    title: Message
+    example:
+      content: Greetings from Apigee!
+      mobile_number: +31624577981
+    type: object
+    properties:
+      content:
+        description: ''
+        example: Greetings from Apigee!
+        type: string
+      mobile_number:
+        description: ''
+        example: +31624577981
+        type: string
+    required:
+    - content
+    - mobile_number
+  Https://apiPrd.kpn.com/ai/imageClassifier/v1/classifyrequest:
+    title: https://api-prd.kpn.com/ai/image-classifier/v1/classifyRequest
+    example:
+      data:
+      - ext: jpg
+        path: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
+      - ext: jpg
+        path: https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg
+    type: object
+    properties:
+      data:
+        description: ''
+        example:
+        - ext: jpg
+          path: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
+        - ext: jpg
+          path: https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg
+        type: array
+        items:
+          $ref: '#/definitions/Datum'
+    required:
+    - data
+  Datum:
+    title: Datum
+    example:
+      ext: jpg
+      path: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
+    type: object
+    properties:
+      ext:
+        description: ''
+        example: jpg
+        type: string
+      path:
+        description: ''
+        example: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
+        type: string
+    required:
+    - ext
+    - path
+  UpdateFieldsOfTheConversationrequest:
+    title: Update fields of the ConversationRequest
+    example:
+      bookmark: true
+      flag: flagged
+      important: true
+    type: object
+    properties:
+      bookmark:
+        description: ''
+        example: true
+        type: boolean
+      flag:
+        description: ''
+        example: flagged
+        type: string
+      important:
+        description: ''
+        example: true
+        type: boolean
+    required:
+    - bookmark
+    - flag
+    - important
+  PostAMessageInTheSpecifiedConversationCopyrequest:
+    title: Post a Message in the specified Conversation CopyRequest
+    example:
+      body: Hi!
+    type: object
+    properties:
+      body:
+        description: ''
+        example: Hi!
+        type: string
+    required:
+    - body
+  Http://webhook.site/7bffced076a5478cAbf438993a51598erequest:
+    title: http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598eRequest
+    example:
+      message: OK
+    type: object
+    properties:
+      message:
+        description: ''
+        example: OK
+        type: string
+    required:
+    - message
