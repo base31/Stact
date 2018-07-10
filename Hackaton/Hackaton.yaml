@@ -2,37 +2,14 @@ swagger: '2.0'
 info:
   version: '1.0'
   title: Hackaton
-  description: >-
-    # Introduction
-
-    What does your API do?
-
-
-    # Overview
-
-    Things that the developers should know about
-
-
-    # Authentication
-
-    What is the preferred way of using the API?
-
-
-    # Error Codes
-
-    What errors and status codes can a user expect?
-
-
-    # Rate limit
-
-    Is there a limit to the number of requests an user can send?
-host: rest.nexmo.com
-basePath: /sms
+  description: 'TODO: Add Description'
+host: api-dev.kpn.com
+basePath: /application-nexmo-v1
 securityDefinitions:
   auth:
     type: oauth2
     flow: implicit
-    authorizationUrl: https://rest.nexmo.com/sms
+    authorizationUrl: https://api-dev.kpn.com/application-nexmo-v1
     scopes: {}
     x-skip-client-authentication: false
 schemes:
@@ -42,6 +19,132 @@ consumes:
 produces:
 - application/json
 paths:
+  /applications:
+    get:
+      description: 'TODO: Add Description'
+      summary: Retrieve your applications
+      tags:
+      - Misc
+      operationId: ApplicationsGet
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /applications?api_key=38aeb353&api_secret=906c14785ecc34f5
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Retrieve your applications
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    post:
+      description: 'TODO: Add Description'
+      summary: Create new application
+      tags:
+      - Misc
+      operationId: ApplicationsPost2
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: api_key
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: type
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: answer_url
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: event_url
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /applications
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: api_key=38aeb353&api_secret=906c14785ecc34f5&name=MyFirstApplication&type=voice&answer_url=https://nexmo-community.github.io/ncco-examples/conference.json&event_url=http://webhook.site/f4c423b1-c48a-438c-9db1-da8497a0b3af
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Create new application
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /json:
     post:
       description: 'TODO: Add Description'
@@ -439,10 +542,10 @@ paths:
   /oauth/client_credential/accesstoken:
     post:
       description: 'TODO: Add Description'
-      summary: GetAccessToken
+      summary: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
       tags:
       - Contexta
-      operationId: OauthClientCredentialAccesstokenPost2
+      operationId: OauthClientCredentialAccesstokenPost3
       produces:
       - application/json
       consumes:
@@ -489,7 +592,7 @@ paths:
           headers: {}
         x-testShouldPass: true
         x-testEnabled: true
-        x-testName: GetAccessToken
+        x-testName: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
         x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
@@ -994,6 +1097,97 @@ paths:
       - application/json
       parameters:
       - name: contexta_transcriptId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /applications/{nexmo_appId}:
+    put:
+      description: 'TODO: Add Description'
+      summary: Update an application
+      tags:
+      - Misc
+      operationId: ApplicationsByNexmoAppIdPut
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: type
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: answer_url
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: event_url
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: nexmo_appId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    delete:
+      description: 'TODO: Add Description'
+      summary: Destroy an Application
+      tags:
+      - Misc
+      operationId: ApplicationsByNexmoAppIdDelete
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: nexmo_appId
         in: path
         required: true
         type: string
