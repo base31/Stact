@@ -19,12 +19,72 @@ consumes:
 produces:
 - application/json
 paths:
+  /oauth/client_credential/accesstoken:
+    post:
+      description: 'TODO: Add Description'
+      summary: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
+      tags:
+      - Contexta
+      operationId: OauthClientCredentialAccesstokenPost4
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: grant_type
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: client_id
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: client_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /oauth/client_credential/accesstoken?grant_type=client_credentials
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: client_id={{contexta_client_id}}&client_secret={{contexta_client_secret}}
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /applications:
     get:
       description: 'TODO: Add Description'
       summary: Retrieve your applications
       tags:
-      - Misc
+      - Application
       operationId: ApplicationsGet
       produces:
       - application/json
@@ -47,8 +107,7 @@ paths:
       responses:
         200:
           description: ''
-      security:
-      - auth: []
+      security: []
       x-unitTests:
       - request:
           method: GET
@@ -75,13 +134,18 @@ paths:
       description: 'TODO: Add Description'
       summary: Create new application
       tags:
-      - Misc
-      operationId: ApplicationsPost2
+      - Application
+      operationId: ApplicationsPost
       produces:
       - application/json
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: api_key
         in: formData
         required: true
@@ -112,16 +176,10 @@ paths:
         required: true
         type: string
         description: ''
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       responses:
         200:
           description: ''
-      security:
-      - auth: []
+      security: []
       x-unitTests:
       - request:
           method: POST
@@ -145,6 +203,95 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
+  /applications/{nexmo_appId}:
+    put:
+      description: 'TODO: Add Description'
+      summary: Update an application
+      tags:
+      - Application
+      operationId: ApplicationsByNexmoAppIdPut
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: type
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: answer_url
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: event_url
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: nexmo_appId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+    delete:
+      description: 'TODO: Add Description'
+      summary: Destroy an Application
+      tags:
+      - Application
+      operationId: ApplicationsByNexmoAppIdDelete
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: nexmo_appId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /json:
     post:
       description: 'TODO: Add Description'
@@ -157,6 +304,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: api_key
         in: formData
         required: true
@@ -179,11 +331,6 @@ paths:
         description: ''
       - name: text
         in: formData
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
         required: true
         type: string
         description: ''
@@ -226,6 +373,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: api_key
         in: formData
         required: true
@@ -243,11 +395,6 @@ paths:
         description: ''
       - name: brand
         in: formData
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
         required: true
         type: string
         description: ''
@@ -290,6 +437,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: api_key
         in: formData
         required: true
@@ -310,11 +462,6 @@ paths:
         required: true
         type: string
         description: code recieved by SMS
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       responses:
         200:
           description: ''
@@ -354,6 +501,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: api_key
         in: formData
         required: true
@@ -366,11 +518,6 @@ paths:
         description: ''
       - name: number
         in: formData
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
         required: true
         type: string
         description: ''
@@ -411,17 +558,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: Body
         in: body
         required: true
         description: ''
         schema:
           $ref: '#/definitions/Https:~1~1apiPrd.kpn.com~1messaging~1smsKpnrequest'
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       responses:
         200:
           description: ''
@@ -460,17 +607,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: Body
         in: body
         required: true
         description: ''
         schema:
           $ref: '#/definitions/Https:~1~1apiPrd.kpn.com~1ai~1imageClassifier~1v1~1classifyrequest'
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       responses:
         200:
           description: ''
@@ -533,66 +680,6 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /oauth/client_credential/accesstoken:
-    post:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
-      tags:
-      - Contexta
-      operationId: OauthClientCredentialAccesstokenPost3
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: grant_type
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: client_id
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: client_secret
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /oauth/client_credential/accesstoken?grant_type=client_credentials
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: client_id={{contexta_client_id}}&client_secret={{contexta_client_secret}}
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
         x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
@@ -704,17 +791,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: Body
         in: body
         required: true
         description: ''
         schema:
           $ref: '#/definitions/UpdateFieldsOfTheConversationrequest'
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       - name: hm_conversation_id
         in: path
         required: true
@@ -743,6 +830,11 @@ paths:
       consumes:
       - application/x-www-form-urlencoded
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: message
         in: formData
         required: true
@@ -750,11 +842,6 @@ paths:
         description: ''
       - name: files
         in: formData
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
         required: true
         type: string
         description: ''
@@ -784,17 +871,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: Body
         in: body
         required: true
         description: ''
         schema:
           $ref: '#/definitions/PostAMessageInTheSpecifiedConversationCopyrequest'
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       - name: hm_conversation_id
         in: path
         required: true
@@ -891,17 +978,17 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
       - name: Body
         in: body
         required: true
         description: ''
         schema:
           $ref: '#/definitions/Http:~1~1webhook.site~17bffced076a5478cAbf438993a51598erequest'
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
       responses:
         200:
           description: ''
@@ -1097,97 +1184,6 @@ paths:
       - application/json
       parameters:
       - name: contexta_transcriptId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /applications/{nexmo_appId}:
-    put:
-      description: 'TODO: Add Description'
-      summary: Update an application
-      tags:
-      - Misc
-      operationId: ApplicationsByNexmoAppIdPut
-      produces:
-      - application/json
-      parameters:
-      - name: api_key
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: name
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: type
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: answer_url
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: event_url
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: nexmo_appId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-    delete:
-      description: 'TODO: Add Description'
-      summary: Destroy an Application
-      tags:
-      - Misc
-      operationId: ApplicationsByNexmoAppIdDelete
-      produces:
-      - application/json
-      parameters:
-      - name: api_key
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: nexmo_appId
         in: path
         required: true
         type: string
