@@ -3,13 +3,13 @@ info:
   version: '1.0'
   title: Hackaton
   description: 'TODO: Add Description'
-host: api-dev.kpn.com
+host: DefaultParameterValue
 basePath: /application-nexmo-v1
 securityDefinitions:
   auth:
     type: oauth2
     flow: implicit
-    authorizationUrl: https://api-dev.kpn.com/application-nexmo-v1
+    authorizationUrl: https://DefaultParameterValue/application-nexmo-v1
     scopes: {}
     x-skip-client-authentication: false
 schemes:
@@ -107,7 +107,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests:
       - request:
           method: GET
@@ -179,7 +180,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests:
       - request:
           method: POST
@@ -251,7 +253,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests: []
       x-operation-settings:
         CollectParameters: false
@@ -285,8 +288,84 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /v1/applications:
+    post:
+      description: 'TODO: Add Description'
+      summary: Create new application - Nexmo
+      tags:
+      - Application
+      operationId: V1ApplicationsPost
+      produces:
+      - application/json
+      consumes:
+      - application/x-www-form-urlencoded
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: api_key
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: name
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: type
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: answer_url
+        in: formData
+        required: true
+        type: string
+        description: ''
+      - name: event_url
+        in: formData
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /v1/applications
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+          body: api_key=38aeb353&api_secret=906c14785ecc34f5&name=MyFirstApplication&type=voice&answer_url=https://nexmo-community.github.io/ncco-examples/conference.json&event_url=http://webhook.site/f4c423b1-c48a-438c-9db1-da8497a0b3af
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Create new application - Nexmo
+        x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
         AllowDynamicQueryParameters: false
@@ -337,7 +416,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests:
       - request:
           method: POST
@@ -401,7 +481,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests:
       - request:
           method: POST
@@ -465,7 +546,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests:
       - request:
           method: POST
@@ -524,7 +606,8 @@ paths:
       responses:
         200:
           description: ''
-      security: []
+      security:
+      - auth: []
       x-unitTests:
       - request:
           method: POST
