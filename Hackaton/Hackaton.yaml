@@ -3,13 +3,13 @@ info:
   version: '1.0'
   title: Hackaton
   description: 'TODO: Add Description'
-host: DefaultParameterValue
+host: api-dev.kpn.com
 basePath: /application-nexmo-v1
 securityDefinitions:
   auth:
     type: oauth2
     flow: implicit
-    authorizationUrl: https://DefaultParameterValue/application-nexmo-v1
+    authorizationUrl: https://api-dev.kpn.com/application-nexmo-v1
     scopes: {}
     x-skip-client-authentication: false
 schemes:
@@ -79,64 +79,13 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
-  /applications:
-    get:
-      description: 'TODO: Add Description'
-      summary: Retrieve your applications
-      tags:
-      - Application
-      operationId: ApplicationsGet
-      produces:
-      - application/json
-      parameters:
-      - name: api_key
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /applications?api_key=38aeb353&api_secret=906c14785ecc34f5
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Retrieve your applications
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
+  /application-nexmo-v1/applications:
     post:
       description: 'TODO: Add Description'
       summary: Create new application
       tags:
       - Application
-      operationId: ApplicationsPost
+      operationId: ApplicationNexmoV1ApplicationsPost
       produces:
       - application/json
       consumes:
@@ -185,7 +134,7 @@ paths:
       x-unitTests:
       - request:
           method: POST
-          uri: /applications
+          uri: /application-nexmo-v1/applications
           headers:
             Content-Type: application/x-www-form-urlencoded
           body: api_key=38aeb353&api_secret=906c14785ecc34f5&name=MyFirstApplication&type=voice&answer_url=https://nexmo-community.github.io/ncco-examples/conference.json&event_url=http://webhook.site/f4c423b1-c48a-438c-9db1-da8497a0b3af
@@ -199,6 +148,58 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: Create new application
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /applications:
+    get:
+      description: 'TODO: Add Description'
+      summary: Retrieve your applications
+      tags:
+      - Application
+      operationId: ApplicationsGet
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: GET
+          uri: /applications?api_key=38aeb353&api_secret=906c14785ecc34f5
+          headers:
+            Content-Type: application/x-www-form-urlencoded
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Retrieve your applications
         x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
@@ -365,6 +366,55 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: Create new application - Nexmo
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /voice-nexmo-v1/calls:
+    post:
+      description: 'TODO: Add Description'
+      summary: Create an outbound call
+      tags:
+      - Voice
+      operationId: VoiceNexmoV1CallsPost
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/CreateAnOutboundCallrequest'
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /voice-nexmo-v1/calls
+          headers:
+            Content-Type: application/json
+          body: '{"to":[{"type":"phone","number":"31624577981"}],"from":[{"type":"phone","number":"14155550100"}],"answer_url":"","answer_method":"GET","event_url":"","event_method":"POST","machine_detection":"continue","length_timer":0,"ringing_timer":0}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: Create an outbound call
         x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
@@ -1283,6 +1333,114 @@ paths:
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
 definitions:
+  CreateAnOutboundCallrequest:
+    title: Create an outbound callRequest
+    example:
+      to:
+      - type: phone
+        number: 31624577981
+      from:
+      - type: phone
+        number: 14155550100
+      answer_url: ''
+      answer_method: GET
+      event_url: ''
+      event_method: POST
+      machine_detection: continue
+      length_timer: 0
+      ringing_timer: 0
+    type: object
+    properties:
+      to:
+        description: ''
+        example:
+        - type: phone
+          number: 31624577981
+        type: array
+        items:
+          $ref: '#/definitions/To'
+      from:
+        description: ''
+        example:
+        - type: phone
+          number: 14155550100
+        type: array
+        items:
+          $ref: '#/definitions/From'
+      answer_url:
+        description: ''
+        type: string
+      answer_method:
+        description: ''
+        example: GET
+        type: string
+      event_url:
+        description: ''
+        type: string
+      event_method:
+        description: ''
+        example: POST
+        type: string
+      machine_detection:
+        description: ''
+        example: continue
+        type: string
+      length_timer:
+        description: ''
+        example: 0
+        type: integer
+        format: int32
+      ringing_timer:
+        description: ''
+        example: 0
+        type: integer
+        format: int32
+    required:
+    - to
+    - from
+    - answer_url
+    - answer_method
+    - event_url
+    - event_method
+    - machine_detection
+    - length_timer
+    - ringing_timer
+  To:
+    title: To
+    example:
+      type: phone
+      number: 31624577981
+    type: object
+    properties:
+      type:
+        description: ''
+        example: phone
+        type: string
+      number:
+        description: ''
+        example: 31624577981
+        type: string
+    required:
+    - type
+    - number
+  From:
+    title: From
+    example:
+      type: phone
+      number: 14155550100
+    type: object
+    properties:
+      type:
+        description: ''
+        example: phone
+        type: string
+      number:
+        description: ''
+        example: 14155550100
+        type: string
+    required:
+    - type
+    - number
   Https://apiPrd.kpn.com/messaging/smsKpnrequest:
     title: https://api-prd.kpn.com/messaging/sms-kpnRequest
     example:
