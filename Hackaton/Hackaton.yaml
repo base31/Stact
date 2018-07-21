@@ -137,7 +137,7 @@ paths:
           uri: /application-nexmo-v1/applications
           headers:
             Content-Type: application/x-www-form-urlencoded
-          body: api_key=38aeb353&api_secret=906c14785ecc34f5&name=MyFirstApplication&type=voice&answer_url=https://nexmo-community.github.io/ncco-examples/conference.json&event_url=http://webhook.site/f4c423b1-c48a-438c-9db1-da8497a0b3af
+          body: api_key=38aeb353&api_secret=906c14785ecc34f5&name=CubesDemoApp&type=voice&answer_url={{ngrok_url}}/ncco/answer&event_url={{ngrok_url}}/ncco/call-events
         expectedResponse:
           x-allowExtraHeaders: true
           x-bodyMatchMode: NONE
@@ -372,6 +372,47 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
+  /{nexmo_appId}:
+    get:
+      description: 'TODO: Add Description'
+      summary: Retrieve an application
+      tags:
+      - Application
+      operationId: ByNexmoAppIdGet
+      produces:
+      - application/json
+      parameters:
+      - name: api_key
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: api_secret
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: nexmo_appId
+        in: path
+        required: true
+        type: string
+        description: ''
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests: []
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
   /voice-nexmo-v1/calls:
     post:
       description: 'TODO: Add Description'
@@ -415,6 +456,55 @@ paths:
         x-testShouldPass: true
         x-testEnabled: true
         x-testName: Create an outbound call
+        x-testDescription: 'TODO: Add Description'
+      x-operation-settings:
+        CollectParameters: false
+        AllowDynamicQueryParameters: false
+        AllowDynamicFormParameters: false
+        IsMultiContentStreaming: false
+  /call-events:
+    post:
+      description: 'TODO: Add Description'
+      summary: EvetUrl Test
+      tags:
+      - Voice
+      operationId: CallEventsPost
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/EveturlTestrequest'
+      responses:
+        200:
+          description: ''
+      security:
+      - auth: []
+      x-unitTests:
+      - request:
+          method: POST
+          uri: /call-events
+          headers:
+            Content-Type: application/json
+          body: '{"event_name":"incomming_call"}'
+        expectedResponse:
+          x-allowExtraHeaders: true
+          x-bodyMatchMode: NONE
+          x-arrayOrderedMatching: false
+          x-arrayCheckCount: false
+          x-matchResponseSchema: true
+          headers: {}
+        x-testShouldPass: true
+        x-testEnabled: true
+        x-testName: EvetUrl Test
         x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
@@ -1441,6 +1531,18 @@ definitions:
     required:
     - type
     - number
+  EveturlTestrequest:
+    title: EvetUrl TestRequest
+    example:
+      event_name: incomming_call
+    type: object
+    properties:
+      event_name:
+        description: ''
+        example: incomming_call
+        type: string
+    required:
+    - event_name
   Https://apiPrd.kpn.com/messaging/smsKpnrequest:
     title: https://api-prd.kpn.com/messaging/sms-kpnRequest
     example:
