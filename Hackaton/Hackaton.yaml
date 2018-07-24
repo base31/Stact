@@ -416,10 +416,10 @@ paths:
   /voice-nexmo-v1/calls:
     post:
       description: 'TODO: Add Description'
-      summary: Create an outbound call
+      summary: Get details of your calls
       tags:
       - Voice
-      operationId: VoiceNexmoV1CallsPost
+      operationId: VoiceNexmoV1CallsPost2
       produces:
       - application/json
       parameters:
@@ -433,7 +433,7 @@ paths:
         required: true
         description: ''
         schema:
-          $ref: '#/definitions/CreateAnOutboundCallrequest'
+          $ref: '#/definitions/GetDetailsOfYourCallsrequest'
       responses:
         200:
           description: ''
@@ -455,7 +455,7 @@ paths:
           headers: {}
         x-testShouldPass: true
         x-testEnabled: true
-        x-testName: Create an outbound call
+        x-testName: Get details of your calls
         x-testDescription: 'TODO: Add Description'
       x-operation-settings:
         CollectParameters: false
@@ -1428,6 +1428,110 @@ definitions:
     example:
       to:
       - type: phone
+        number: 31617185666
+      from:
+        type: phone
+        number: 3197010240299
+      answer_url:
+      - https://nexmo.cubesapi.com/ncco/answer
+      answer_method: GET
+      event_url:
+      - https://nexmo.cubesapi.com/ncco/call-events
+      event_method: POST
+    type: object
+    properties:
+      to:
+        description: ''
+        example:
+        - type: phone
+          number: 31617185666
+        type: array
+        items:
+          $ref: '#/definitions/To'
+      from:
+        $ref: '#/definitions/From'
+      answer_url:
+        description: ''
+        example:
+        - https://nexmo.cubesapi.com/ncco/answer
+        type: array
+        items:
+          type: string
+      answer_method:
+        description: ''
+        example: GET
+        type: string
+      event_url:
+        description: ''
+        example:
+        - https://nexmo.cubesapi.com/ncco/call-events
+        type: array
+        items:
+          type: string
+      event_method:
+        description: ''
+        example: POST
+        type: string
+    required:
+    - to
+    - from
+    - answer_url
+    - answer_method
+    - event_url
+    - event_method
+  To:
+    title: To
+    example:
+      type: phone
+      number: 31617185666
+    type: object
+    properties:
+      type:
+        description: ''
+        example: phone
+        type: string
+      number:
+        description: ''
+        example: 31617185666
+        type: string
+    required:
+    - type
+    - number
+  From:
+    title: From
+    example:
+      type: phone
+      number: 3197010240299
+    type: object
+    properties:
+      type:
+        description: ''
+        example: phone
+        type: string
+      number:
+        description: ''
+        example: 3197010240299
+        type: string
+    required:
+    - type
+    - number
+  EveturlTestrequest:
+    title: EvetUrl TestRequest
+    example:
+      event_name: incomming_call
+    type: object
+    properties:
+      event_name:
+        description: ''
+        example: incomming_call
+        type: string
+    required:
+    - event_name
+  GetDetailsOfYourCallsrequest:
+    title: Get details of your callsRequest
+    example:
+      to:
+      - type: phone
         number: 31624577981
       from:
       - type: phone
@@ -1495,54 +1599,6 @@ definitions:
     - machine_detection
     - length_timer
     - ringing_timer
-  To:
-    title: To
-    example:
-      type: phone
-      number: 31624577981
-    type: object
-    properties:
-      type:
-        description: ''
-        example: phone
-        type: string
-      number:
-        description: ''
-        example: 31624577981
-        type: string
-    required:
-    - type
-    - number
-  From:
-    title: From
-    example:
-      type: phone
-      number: 14155550100
-    type: object
-    properties:
-      type:
-        description: ''
-        example: phone
-        type: string
-      number:
-        description: ''
-        example: 14155550100
-        type: string
-    required:
-    - type
-    - number
-  EveturlTestrequest:
-    title: EvetUrl TestRequest
-    example:
-      event_name: incomming_call
-    type: object
-    properties:
-      event_name:
-        description: ''
-        example: incomming_call
-        type: string
-    required:
-    - event_name
   Https://apiPrd.kpn.com/messaging/smsKpnrequest:
     title: https://api-prd.kpn.com/messaging/sms-kpnRequest
     example:
