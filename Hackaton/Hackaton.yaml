@@ -372,13 +372,13 @@ paths:
         AllowDynamicQueryParameters: false
         AllowDynamicFormParameters: false
         IsMultiContentStreaming: false
-  /{nexmo_appId}:
+  /application-nexmo-v1/applications/{nexmo_appId}:
     get:
       description: 'TODO: Add Description'
       summary: Retrieve an application
       tags:
       - Application
-      operationId: ByNexmoAppIdGet
+      operationId: ApplicationNexmoV1ApplicationsByNexmoAppIdGet
       produces:
       - application/json
       parameters:
