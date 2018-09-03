@@ -1,1620 +1,1348 @@
-swagger: '2.0'
-info:
-  version: '1.0'
-  title: Hackaton
-  description: 'TODO: Add Description'
-host: example.com
-basePath: /
-securityDefinitions:
-  auth:
-    type: oauth2
-    flow: implicit
-    authorizationUrl: http://example.com
-    scopes: {}
-    x-skip-client-authentication: false
-schemes:
-- http
-consumes:
-- application/json
-produces:
-- application/json
-paths:
-  /oauth/client_credential/accesstoken:
-    post:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
-      tags:
-      - Contexta
-      operationId: OauthClientCredentialAccesstokenPost4
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: grant_type
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: client_id
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: client_secret
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /oauth/client_credential/accesstoken?grant_type=client_credentials
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: client_id={{contexta_client_id}}&client_secret={{contexta_client_secret}}
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials1
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /communication/nexmo/applications:
-    get:
-      description: 'TODO: Add Description'
-      summary: Retrieve your applications
-      tags:
-      - Application
-      operationId: CommunicationNexmoApplicationsGet
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: api-version
-        in: header
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /communication/nexmo/applications
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-            api-version: v1
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Retrieve your applications
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-    post:
-      description: 'TODO: Add Description'
-      summary: Create new application
-      tags:
-      - Application
-      operationId: CommunicationNexmoApplicationsPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: name
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: type
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: answer_url
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: event_url
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /communication/nexmo/applications
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: name=CubesNexmoDemoApp&type=voice&answer_url={{ngrok_url}}/ncco/answer&event_url={{ngrok_url}}/ncco/call-events
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Create new application
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /communication/nexmo/applications/{nexmo_appId}:
-    get:
-      description: 'TODO: Add Description'
-      summary: Retrieve an application
-      tags:
-      - Application
-      operationId: CommunicationNexmoApplicationsByNexmoAppIdGet
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: nexmo_appId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-    put:
-      description: 'TODO: Add Description'
-      summary: Update an application
-      tags:
-      - Application
-      operationId: CommunicationNexmoApplicationsByNexmoAppIdPut
-      produces:
-      - application/json
-      parameters:
-      - name: name
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: type
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: answer_url
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: event_url
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: nexmo_appId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-    delete:
-      description: 'TODO: Add Description'
-      summary: Destroy an Application
-      tags:
-      - Application
-      operationId: CommunicationNexmoApplicationsByNexmoAppIdDelete
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: nexmo_appId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /voice-nexmo-v1/calls:
-    post:
-      description: 'TODO: Add Description'
-      summary: Get details of your calls
-      tags:
-      - Voice
-      operationId: VoiceNexmoV1CallsPost2
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/GetDetailsOfYourCallsrequest'
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /voice-nexmo-v1/calls
-          headers:
-            Content-Type: application/json
-          body: '{"to":[{"type":"phone","number":"31624577981"}],"from":[{"type":"phone","number":"14155550100"}],"answer_url":"","answer_method":"GET","event_url":"","event_method":"POST","machine_detection":"continue","length_timer":0,"ringing_timer":0}'
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Get details of your calls
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /call-events:
-    post:
-      description: 'TODO: Add Description'
-      summary: EvetUrl Test
-      tags:
-      - Voice
-      operationId: CallEventsPost
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/EveturlTestrequest'
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /call-events
-          headers:
-            Content-Type: application/json
-          body: '{"event_name":"incomming_call"}'
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: EvetUrl Test
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /json:
-    post:
-      description: 'TODO: Add Description'
-      summary: Send SMS
-      tags:
-      - Nexmo API's
-      operationId: JsonPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: api_key
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: to
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: from
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: text
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /json
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&to={{nexmo_phoneNr}}&from="NEXMO"&text="Hello from Nexmo"
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Send SMS
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /verify/json:
-    post:
-      description: 'TODO: Add Description'
-      summary: Verify Step 1
-      tags:
-      - Nexmo API's
-      operationId: VerifyJsonPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: api_key
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: number
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: brand
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /verify/json
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&number={{nexmo_phoneNr}}&brand="NexmoVerifyTest"
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Verify Step 1
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /verify/check/json:
-    post:
-      description: 'TODO: Add Description'
-      summary: Verify Step 2
-      tags:
-      - Nexmo API's
-      operationId: VerifyCheckJsonPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: api_key
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: request_id
-        in: formData
-        required: true
-        type: string
-        description: request_id recieved in step 1
-      - name: code
-        in: formData
-        required: true
-        type: string
-        description: code recieved by SMS
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /verify/check/json
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&request_id={{nexmo_request_id}}&code=3057
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Verify Step 2
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /ni/advanced/json:
-    post:
-      description: 'TODO: Add Description'
-      summary: Number insight
-      tags:
-      - Nexmo API's
-      operationId: NiAdvancedJsonPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: api_key
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: api_secret
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: number
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /ni/advanced/json
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: api_key={{nexmo_key}}&api_secret={{nexmo_secret}}&number={{nexmo_phoneNr}}
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Number insight
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /messaging/sms-kpn/v1/send:
-    post:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/messaging/sms-kpn
-      tags:
-      - SMS
-      operationId: MessagingSmsKpnV1SendPost
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/Https:~1~1apiPrd.kpn.com~1messaging~1smsKpnrequest'
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /messaging/sms-kpn/v1/send
-          headers:
-            Content-Type: application/json
-          body: '{"messages":[{"content":"Greetings from Apigee!","mobile_number":"+31624577981"}],"sender":"KPN"}'
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/messaging/sms-kpn
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /ai/image-classifier/v1/classify:
-    post:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/ai/image-classifier/v1/classify
-      tags:
-      - Image Classifier
-      operationId: AiImageClassifierV1ClassifyPost
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/Https:~1~1apiPrd.kpn.com~1ai~1imageClassifier~1v1~1classifyrequest'
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /ai/image-classifier/v1/classify
-          headers:
-            Content-Type: application/json
-          body: '{"data":[{"ext":"jpg","path":"http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg"},{"ext":"jpg","path":"https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg"}]}'
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/ai/image-classifier/v1/classify
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /contact-center/kds/v1/agents:
-    get:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml
-      tags:
-      - Dashboard
-      operationId: ContactCenterKdsV1AgentsGet
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: query
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /contact-center/kds/v1/agents?Content-Type=xml
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/conversations/contacts:
-    get:
-      description: 'TODO: Add Description'
-      summary: Retrieve a list of Conversations with Contacts
-      tags:
-      - Conversations
-      operationId: HealthmessengerV1ConversationsContactsGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /healthmessenger/v1/conversations/contacts
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Retrieve a list of Conversations with Contacts
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/conversations/coworkers:
-    get:
-      description: 'TODO: Add Description'
-      summary: Retrieve a list of Conversations with Coworkers
-      tags:
-      - Conversations
-      operationId: HealthmessengerV1ConversationsCoworkersGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /healthmessenger/v1/conversations/coworkers
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: Retrieve a list of Conversations with Coworkers
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/conversations/{hm_conversation_id}:
-    get:
-      description: 'TODO: Add Description'
-      summary: Retrieve a single Conversation
-      tags:
-      - Conversations
-      operationId: HealthmessengerV1ConversationsByHmConversationIdGet
-      produces:
-      - application/json
-      parameters:
-      - name: hm_conversation_id
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-    put:
-      description: 'TODO: Add Description'
-      summary: Update fields of the Conversation
-      tags:
-      - Conversations
-      operationId: HealthmessengerV1ConversationsByHmConversationIdPut
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/UpdateFieldsOfTheConversationrequest'
-      - name: hm_conversation_id
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/conversations/{hm_conversation_id}/attachments:
-    post:
-      description: 'TODO: Add Description'
-      summary: Post a Message with Attachments
-      tags:
-      - Conversations
-      operationId: HealthmessengerV1ConversationsAttachmentsByHmConversationIdPost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: message
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: files
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: hm_conversation_id
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/conversations/{hm_conversation_id}/messages:
-    post:
-      description: 'TODO: Add Description'
-      summary: Post a Message in the specified Conversation Copy
-      tags:
-      - Conversations
-      operationId: HealthmessengerV1ConversationsMessagesByHmConversationIdPost
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/PostAMessageInTheSpecifiedConversationCopyrequest'
-      - name: hm_conversation_id
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/users:
-    get:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/healthmessenger/v1/users
-      tags:
-      - Users
-      operationId: HealthmessengerV1UsersGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /healthmessenger/v1/users
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/healthmessenger/v1/users
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /healthmessenger/v1/me/coworkers:
-    get:
-      description: 'TODO: Add Description'
-      summary: https://api-prd.kpn.com/healthmessenger/v1/me
-      tags:
-      - HealthMessenger
-      operationId: HealthmessengerV1MeCoworkersGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /healthmessenger/v1/me/coworkers
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://api-prd.kpn.com/healthmessenger/v1/me
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /7bffced0-76a5-478c-abf4-38993a51598e:
-    post:
-      description: 'TODO: Add Description'
-      summary: http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598e
-      tags:
-      - Demo
-      operationId: 7bffced076a5478cAbf438993a51598ePost
-      produces:
-      - application/json
-      parameters:
-      - name: Content-Type
-        in: header
-        required: true
-        type: string
-        description: ''
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/Http:~1~1webhook.site~17bffced076a5478cAbf438993a51598erequest'
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /7bffced0-76a5-478c-abf4-38993a51598e
-          headers:
-            Content-Type: application/json
-          body: '{"message":"OK"}'
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598e
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /decoders:
-    get:
-      description: 'TODO: Add Description'
-      summary: https://speechapi.contextaservices.com/decoders
-      tags:
-      - Contexta
-      operationId: DecodersGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /decoders
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: https://speechapi.contextaservices.com/decoders
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /communication/contexta/speech/v1/decoders:
-    get:
-      description: 'TODO: Add Description'
-      summary: ListDecoders
-      tags:
-      - Contexta
-      operationId: CommunicationContextaSpeechV1DecodersGet
-      produces:
-      - application/json
-      parameters: []
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: GET
-          uri: /communication/contexta/speech/v1/decoders
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: ListDecoders
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /communication/contexta/speech/v1/transcripts/create:
-    post:
-      description: 'TODO: Add Description'
-      summary: CreateTranscripts
-      tags:
-      - Contexta
-      operationId: CommunicationContextaSpeechV1TranscriptsCreatePost
-      produces:
-      - application/json
-      consumes:
-      - application/x-www-form-urlencoded
-      parameters:
-      - name: callbackurl
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: data
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: audio
-        in: formData
-        required: true
-        type: string
-        description: ''
-      - name: decoder
-        in: formData
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests:
-      - request:
-          method: POST
-          uri: /communication/contexta/speech/v1/transcripts/create
-          headers:
-            Content-Type: application/x-www-form-urlencoded
-          body: callbackurl=http://webhook.site/eea4f1f6-97f3-46f1-aed2-f8fabd5f631a&data={"message":"OK"}&audio=&decoder=5b16b7c7fb6fc02bcb8ec28e
-        expectedResponse:
-          x-allowExtraHeaders: true
-          x-bodyMatchMode: NONE
-          x-arrayOrderedMatching: false
-          x-arrayCheckCount: false
-          x-matchResponseSchema: true
-          headers: {}
-        x-testShouldPass: true
-        x-testEnabled: true
-        x-testName: CreateTranscripts
-        x-testDescription: 'TODO: Add Description'
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /communication/contexta/speech/v1/transcripts/status/{contexta_transcriptId}:
-    get:
-      description: 'TODO: Add Description'
-      summary: GetTranscriptsStatus
-      tags:
-      - Contexta
-      operationId: CommunicationContextaSpeechV1TranscriptsStatusByContextaTranscriptIdGet
-      produces:
-      - application/json
-      parameters:
-      - name: contexta_transcriptId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-  /communication/contexta/speech/v1/transcripts/show/{contexta_transcriptId}:
-    get:
-      description: 'TODO: Add Description'
-      summary: GetTranscriptsXml
-      tags:
-      - Contexta
-      operationId: CommunicationContextaSpeechV1TranscriptsShowByContextaTranscriptIdGet
-      produces:
-      - application/json
-      parameters:
-      - name: contexta_transcriptId
-        in: path
-        required: true
-        type: string
-        description: ''
-      responses:
-        200:
-          description: ''
-      security:
-      - auth: []
-      x-unitTests: []
-      x-operation-settings:
-        CollectParameters: false
-        AllowDynamicQueryParameters: false
-        AllowDynamicFormParameters: false
-        IsMultiContentStreaming: false
-definitions:
-  CreateAnOutboundCallrequest:
-    title: Create an outbound callRequest
-    example:
-      to:
-      - type: phone
-        number: 31617185666
-      from:
-        type: phone
-        number: 3197010240299
-      answer_url:
-      - https://nexmo.cubesapi.com/ncco/answer
-      answer_method: GET
-      event_url:
-      - https://nexmo.cubesapi.com/ncco/call-events
-      event_method: POST
-    type: object
-    properties:
-      to:
-        description: ''
-        example:
-        - type: phone
-          number: 31617185666
-        type: array
-        items:
-          $ref: '#/definitions/To'
-      from:
-        $ref: '#/definitions/From'
-      answer_url:
-        description: ''
-        example:
-        - https://nexmo.cubesapi.com/ncco/answer
-        type: array
-        items:
-          type: string
-      answer_method:
-        description: ''
-        example: GET
-        type: string
-      event_url:
-        description: ''
-        example:
-        - https://nexmo.cubesapi.com/ncco/call-events
-        type: array
-        items:
-          type: string
-      event_method:
-        description: ''
-        example: POST
-        type: string
-    required:
-    - to
-    - from
-    - answer_url
-    - answer_method
-    - event_url
-    - event_method
-  To:
-    title: To
-    example:
-      type: phone
-      number: 31617185666
-    type: object
-    properties:
-      type:
-        description: ''
-        example: phone
-        type: string
-      number:
-        description: ''
-        example: 31617185666
-        type: string
-    required:
-    - type
-    - number
-  From:
-    title: From
-    example:
-      type: phone
-      number: 3197010240299
-    type: object
-    properties:
-      type:
-        description: ''
-        example: phone
-        type: string
-      number:
-        description: ''
-        example: 3197010240299
-        type: string
-    required:
-    - type
-    - number
-  EveturlTestrequest:
-    title: EvetUrl TestRequest
-    example:
-      event_name: incomming_call
-    type: object
-    properties:
-      event_name:
-        description: ''
-        example: incomming_call
-        type: string
-    required:
-    - event_name
-  GetDetailsOfYourCallsrequest:
-    title: Get details of your callsRequest
-    example:
-      to:
-      - type: phone
-        number: 31624577981
-      from:
-      - type: phone
-        number: 14155550100
-      answer_url: ''
-      answer_method: GET
-      event_url: ''
-      event_method: POST
-      machine_detection: continue
-      length_timer: 0
-      ringing_timer: 0
-    type: object
-    properties:
-      to:
-        description: ''
-        example:
-        - type: phone
-          number: 31624577981
-        type: array
-        items:
-          $ref: '#/definitions/To'
-      from:
-        description: ''
-        example:
-        - type: phone
-          number: 14155550100
-        type: array
-        items:
-          $ref: '#/definitions/From'
-      answer_url:
-        description: ''
-        type: string
-      answer_method:
-        description: ''
-        example: GET
-        type: string
-      event_url:
-        description: ''
-        type: string
-      event_method:
-        description: ''
-        example: POST
-        type: string
-      machine_detection:
-        description: ''
-        example: continue
-        type: string
-      length_timer:
-        description: ''
-        example: 0
-        type: integer
-        format: int32
-      ringing_timer:
-        description: ''
-        example: 0
-        type: integer
-        format: int32
-    required:
-    - to
-    - from
-    - answer_url
-    - answer_method
-    - event_url
-    - event_method
-    - machine_detection
-    - length_timer
-    - ringing_timer
-  Https://apiPrd.kpn.com/messaging/smsKpnrequest:
-    title: https://api-prd.kpn.com/messaging/sms-kpnRequest
-    example:
-      messages:
-      - content: Greetings from Apigee!
-        mobile_number: +31624577981
-      sender: KPN
-    type: object
-    properties:
-      messages:
-        description: ''
-        example:
-        - content: Greetings from Apigee!
-          mobile_number: +31624577981
-        type: array
-        items:
-          $ref: '#/definitions/Message'
-      sender:
-        description: ''
-        example: KPN
-        type: string
-    required:
-    - messages
-    - sender
-  Message:
-    title: Message
-    example:
-      content: Greetings from Apigee!
-      mobile_number: +31624577981
-    type: object
-    properties:
-      content:
-        description: ''
-        example: Greetings from Apigee!
-        type: string
-      mobile_number:
-        description: ''
-        example: +31624577981
-        type: string
-    required:
-    - content
-    - mobile_number
-  Https://apiPrd.kpn.com/ai/imageClassifier/v1/classifyrequest:
-    title: https://api-prd.kpn.com/ai/image-classifier/v1/classifyRequest
-    example:
-      data:
-      - ext: jpg
-        path: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
-      - ext: jpg
-        path: https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg
-    type: object
-    properties:
-      data:
-        description: ''
-        example:
-        - ext: jpg
-          path: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
-        - ext: jpg
-          path: https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg
-        type: array
-        items:
-          $ref: '#/definitions/Datum'
-    required:
-    - data
-  Datum:
-    title: Datum
-    example:
-      ext: jpg
-      path: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
-    type: object
-    properties:
-      ext:
-        description: ''
-        example: jpg
-        type: string
-      path:
-        description: ''
-        example: http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg
-        type: string
-    required:
-    - ext
-    - path
-  UpdateFieldsOfTheConversationrequest:
-    title: Update fields of the ConversationRequest
-    example:
-      bookmark: true
-      flag: flagged
-      important: true
-    type: object
-    properties:
-      bookmark:
-        description: ''
-        example: true
-        type: boolean
-      flag:
-        description: ''
-        example: flagged
-        type: string
-      important:
-        description: ''
-        example: true
-        type: boolean
-    required:
-    - bookmark
-    - flag
-    - important
-  PostAMessageInTheSpecifiedConversationCopyrequest:
-    title: Post a Message in the specified Conversation CopyRequest
-    example:
-      body: Hi!
-    type: object
-    properties:
-      body:
-        description: ''
-        example: Hi!
-        type: string
-    required:
-    - body
-  Http://webhook.site/7bffced076a5478cAbf438993a51598erequest:
-    title: http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598eRequest
-    example:
-      message: OK
-    type: object
-    properties:
-      message:
-        description: ''
-        example: OK
-        type: string
-    required:
-    - message
+{
+  "info": {
+    "_postman_id": "322677-9500ba56-0bca-5b0f-63ce-17b15b972be5",
+    "name": "Hackaton",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "322677-3f2bc0c2-c4ec-9ad2-0e73-fc9aa42a70f6",
+      "name": "Nexmo API's",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "322677-f3177518-0664-4dae-adfb-4f97b0b097e0",
+          "name": "Application",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-42f86736-7fce-486f-9a92-bc335ca5ed5a",
+              "name": "GetAccessToken",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (responseCode.code === 200){",
+                      "    var data = JSON.parse(responseBody);",
+                      "    postman.setEnvironmentVariable(\"kpn_access_token\", data.access_token);",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "client_id",
+                      "type": "text",
+                      "value": "{{kpn_client_id}}"
+                    },
+                    {
+                      "key": "client_secret",
+                      "type": "text",
+                      "value": "{{kpn_client_secret}}"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "https://{{base_url}}/oauth/client_credential/accesstoken?grant_type=client_credentials",
+                  "protocol": "https",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "client_credential",
+                    "accesstoken"
+                  ],
+                  "query": [
+                    {
+                      "key": "grant_type",
+                      "value": "client_credentials",
+                      "equals": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-d32de2b7-67f9-5934-bf8b-a2f2e99ca994",
+              "name": "Create new application",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2f50a30f-04df-4c8c-9c2c-728e54a4595d",
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (responseCode.code === 201){",
+                      "    var data = JSON.parse(responseBody);",
+                      "    postman.setEnvironmentVariable(\"nexmo_appId\", data.id);",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "api_key",
+                      "value": "38aeb353",
+                      "type": "text",
+                      "description": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "api_secret",
+                      "value": "906c14785ecc34f5",
+                      "type": "text",
+                      "description": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "name",
+                      "value": "CubesNexmoDemoApp",
+                      "type": "text",
+                      "description": ""
+                    },
+                    {
+                      "key": "type",
+                      "value": "voice",
+                      "type": "text",
+                      "description": ""
+                    },
+                    {
+                      "key": "answer_url",
+                      "value": "{{ngrok_url}}/ncco/answer",
+                      "type": "text",
+                      "description": ""
+                    },
+                    {
+                      "key": "event_url",
+                      "value": "{{ngrok_url}}/ncco/call-events",
+                      "type": "text",
+                      "description": ""
+                    }
+                  ]
+                },
+                "url": "https://{{base_url}}/communication/nexmo/applications"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-8283bfa4-b20f-4110-a864-2b493472c3ba",
+              "name": "Retrieve an application",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "api_key",
+                      "value": "38aeb353",
+                      "type": "text"
+                    },
+                    {
+                      "key": "api_secret",
+                      "value": "906c14785ecc34f5",
+                      "type": "text"
+                    },
+                    {
+                      "key": "name",
+                      "value": "MyFirstApplication",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type",
+                      "value": "voice",
+                      "type": "text"
+                    },
+                    {
+                      "key": "answer_url",
+                      "value": "https://nexmo-community.github.io/ncco-examples/conference.json",
+                      "type": "text"
+                    },
+                    {
+                      "key": "event_url",
+                      "value": "http://webhook.site/f4c423b1-c48a-438c-9db1-da8497a0b3af",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "https://{{base_url}}/communication/nexmo/applications/{{nexmo_appId}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-48ec1c93-aae9-06d9-20fa-9464fe6fb5b6",
+              "name": "Retrieve your applications",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  },
+                  {
+                    "key": "api-version",
+                    "value": "v1"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "key": "api_key",
+                      "value": "38aeb353",
+                      "type": "text"
+                    },
+                    {
+                      "key": "api_secret",
+                      "value": "906c14785ecc34f5",
+                      "type": "text"
+                    },
+                    {
+                      "key": "name",
+                      "value": "MyFirstApplication",
+                      "type": "text"
+                    },
+                    {
+                      "key": "type",
+                      "value": "voice",
+                      "type": "text"
+                    },
+                    {
+                      "key": "answer_url",
+                      "value": "https://nexmo-community.github.io/ncco-examples/conference.json",
+                      "type": "text"
+                    },
+                    {
+                      "key": "event_url",
+                      "value": "http://webhook.site/f4c423b1-c48a-438c-9db1-da8497a0b3af",
+                      "type": "text"
+                    }
+                  ]
+                },
+                "url": "https://{{base_url}}/communication/nexmo/applications"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-a02bb1ae-055c-04ee-64c8-60bf09620769",
+              "name": "Update an application",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "https://{{base_url}}/communication/nexmo/applications/{{nexmo_appId}}?name=CubesNexmoDemoApp&type=voice&answer_url={{ngrok_url}}/ncco/answer&event_url={{ngrok_url}}/ncco/call-events",
+                  "protocol": "https",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "communication",
+                    "nexmo",
+                    "applications",
+                    "{{nexmo_appId}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "CubesNexmoDemoApp",
+                      "equals": true
+                    },
+                    {
+                      "key": "type",
+                      "value": "voice",
+                      "equals": true
+                    },
+                    {
+                      "key": "answer_url",
+                      "value": "{{ngrok_url}}/ncco/answer",
+                      "equals": true
+                    },
+                    {
+                      "key": "event_url",
+                      "value": "{{ngrok_url}}/ncco/call-events",
+                      "equals": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-ec1a2366-36e9-14c6-b277-ae457b9f7773",
+              "name": "Destroy an Application",
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  }
+                ],
+                "body": {},
+                "url": "https://{{base_url}}/communication/nexmo/applications/{{nexmo_appId}}"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-e6051fbe-cf06-4780-8fac-ef4839283a9e",
+          "name": "Voice",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-6d0b294e-6146-40e4-b7ad-c40bd8e7cd7d",
+              "name": "Create an outbound call",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  },
+                  {
+                    "key": "ApplicationId",
+                    "value": "7f3b88f0-fa0d-489e-81fc-770b63812051"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": [\n    {\n      \"type\": \"phone\",\n      \"number\": \"31617185666\"\n    }\n  ],\n  \"from\":{\n      \"type\": \"phone\",\n      \"number\": \"3197010240299\"\n    }\n  ,\n  \"answer_url\": [\"https://nexmo.cubesapi.com/ncco/answer\"],\n  \"answer_method\": \"GET\",\n  \"event_url\": [\"https://nexmo.cubesapi.com/ncco/call-events\"],\n  \"event_method\": \"POST\"\n}"
+                },
+                "url": "https://{{base_url}}/voice-nexmo-v1/calls"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-d5ed296b-b444-455f-8c28-0a734580e2c7",
+              "name": "EvetUrl Test",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n\t\"event_name\":\"incomming_call\"\n}"
+                },
+                "url": "https://ee2ebbaa.ngrok.io/ncco/call-events"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-f9f69d53-725e-4cc0-883e-7a34d53b4cc1",
+              "name": "Get details of your calls",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"to\": [\n    {\n      \"type\": \"phone\",\n      \"number\": \"31624577981\"\n    }\n  ],\n  \"from\": [\n    {\n      \"type\": \"phone\",\n      \"number\": \"14155550100\"\n    }\n  ],\n  \"answer_url\": \"\",\n  \"answer_method\": \"GET\",\n  \"event_url\": \"\",\n  \"event_method\": \"POST\",\n  \"machine_detection\": \"continue\",\n  \"length_timer\": 0,\n  \"ringing_timer\": 0\n}"
+                },
+                "url": "https://{{base_url}}/voice-nexmo-v1/calls"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-1ddbcd53-b501-5eda-0fb1-1a3cd73770c0",
+          "name": "Send SMS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "api_key",
+                  "value": "{{nexmo_key}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "api_secret",
+                  "value": "{{nexmo_secret}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "to",
+                  "value": "{{nexmo_phoneNr}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "from",
+                  "value": "\"NEXMO\"",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "text",
+                  "value": "\"Hello from Nexmo\"",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            },
+            "url": "https://rest.nexmo.com/sms/json"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-e9f77fbd-6755-7bce-d7f3-210cafbe2aca",
+          "name": "Verify Step 1",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200){",
+                  "    var data = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"nexmo_request_id\", data.request_id);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "api_key",
+                  "value": "{{nexmo_key}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "api_secret",
+                  "value": "{{nexmo_secret}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "number",
+                  "value": "{{nexmo_phoneNr}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "brand",
+                  "value": "\"NexmoVerifyTest\"",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            },
+            "url": "https://api.nexmo.com/verify/json"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-69bf49fb-2362-57f9-449f-a73656e319fb",
+          "name": "Verify Step 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "api_key",
+                  "value": "{{nexmo_key}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "api_secret",
+                  "value": "{{nexmo_secret}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "request_id",
+                  "value": "{{nexmo_request_id}}",
+                  "type": "text",
+                  "description": "request_id recieved in step 1"
+                },
+                {
+                  "key": "code",
+                  "value": "3057",
+                  "type": "text",
+                  "description": "code recieved by SMS"
+                }
+              ]
+            },
+            "url": "https://api.nexmo.com/verify/check/json"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-d8c16b53-b384-d30b-6dc5-20e9104b7fa9",
+          "name": "Number insight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "api_key",
+                  "value": "{{nexmo_key}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "api_secret",
+                  "value": "{{nexmo_secret}}",
+                  "type": "text",
+                  "description": ""
+                },
+                {
+                  "key": "number",
+                  "value": "{{nexmo_phoneNr}}",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            },
+            "url": "https://api.nexmo.com/ni/advanced/json"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "322677-f5dbc278-235c-fa5e-bd0d-f909c780f51d",
+      "name": "KPN",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "322677-f92a3c0c-a0fa-451f-02ac-41e6e278c41e",
+          "name": "SMS",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-ac42c218-1f3e-f096-b541-77992486b2ae",
+              "name": "https://api-prd.kpn.com/messaging/sms-kpn",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "BearerToken {{kpn_access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"messages\": [\r\n       {\r\n           \"content\": \"Greetings from Apigee!\",\r\n           \"mobile_number\": \"+31624577981\"\r\n       }\r\n   ],\r\n  \"sender\": \"KPN\"\r\n}\r\n"
+                },
+                "url": "https://api-prd.kpn.com/messaging/sms-kpn/v1/send"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-09f27612-486f-7410-6b3a-879a7631ae18",
+          "name": "Image Classifier",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-180fb541-375d-2663-1d8d-d00534076055",
+              "name": "https://api-prd.kpn.com/ai/image-classifier/v1/classify",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"data\": [{\r\n    \"ext\" : \"jpg\",\r\n    \"path\" : \"http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg\"\r\n  },{\r\n    \"ext\" : \"jpg\",\r\n    \"path\" : \"https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg\"\r\n  }]\r\n}"
+                },
+                "url": "https://api-prd.kpn.com/ai/image-classifier/v1/classify"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-56df003f-391f-bffb-8b70-fa7aa1d96041",
+          "name": "Dashboard",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-3c2d71ca-4576-6a6d-821c-be977b921d9a",
+              "name": "https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "BearerToken {{access_token}}"
+                  }
+                ],
+                "body": {},
+                "url": {
+                  "raw": "https://api-prd.kpn.com/contact-center/kds/v1/agents?Content-Type=xml",
+                  "protocol": "https",
+                  "host": [
+                    "api-prd",
+                    "kpn",
+                    "com"
+                  ],
+                  "path": [
+                    "contact-center",
+                    "kds",
+                    "v1",
+                    "agents"
+                  ],
+                  "query": [
+                    {
+                      "key": "Content-Type",
+                      "value": "xml",
+                      "equals": true
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-559e83bb-e57e-db78-4da0-e38cf2e79fd2",
+          "name": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200){",
+                  "    var data = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"kpn_access_token\", data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "description": "",
+                  "key": "client_id",
+                  "type": "text",
+                  "value": "{{kpn_client_id}}"
+                },
+                {
+                  "description": "",
+                  "key": "client_secret",
+                  "type": "text",
+                  "value": "{{kpn_client_secret}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+              "protocol": "https",
+              "host": [
+                "api-prd",
+                "kpn",
+                "com"
+              ],
+              "path": [
+                "oauth",
+                "client_credential",
+                "accesstoken"
+              ],
+              "query": [
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "322677-054d26ec-dfae-4021-a606-5d5c5d5bf3d8",
+      "name": "HealthMessenger",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "322677-ff67fd68-c3cd-4a07-bee5-31fda4550530",
+          "name": "Conversations",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-e68eca70-59be-4bef-97fc-9429fc4b87ff",
+              "name": "Retrieve a list of Conversations with Contacts",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "750ee263-4e70-4448-90fc-ea84bb31cc6a",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/conversations/contacts"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-c66c608b-8e13-4190-8421-58cc5d461e63",
+              "name": "Retrieve a list of Conversations with Coworkers",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "0a05d0fd-5f3a-4e27-834c-68dfb7b7236b",
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (responseCode.code === 200){",
+                      "    var data = JSON.parse(responseBody);",
+                      "    ",
+                      "    for(i = 0; i < data.length; i++){",
+                      "        ",
+                      "        if(data[i].user.first_name === \"Dejan\"){",
+                      "            postman.setEnvironmentVariable(\"hm_conversation_id\", data[i].id);",
+                      "            tests[data[i].user.first_name + \" (using id for conversation: \"+data[i].id+\" )\"] = true",
+                      "        }",
+                      "    }",
+                      "    ",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "750ee263-4e70-4448-90fc-ea84bb31cc6a",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/conversations/coworkers"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-9267e3e7-80d6-41c1-bfe7-75030ddea689",
+              "name": "Retrieve a single Conversation",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "750ee263-4e70-4448-90fc-ea84bb31cc6a",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/conversations/{{hm_conversation_id}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-24bbc9a7-cbac-4e12-8c7f-42d1dd338169",
+              "name": "Update fields of the Conversation",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "750ee263-4e70-4448-90fc-ea84bb31cc6a",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bookmark\": true,\n  \"flag\": \"flagged\",\n  \"important\": true\n}"
+                },
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/conversations/{{hm_conversation_id}}"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-3986950b-65a2-4400-83fd-f74821b45066",
+              "name": "Post a Message with Attachments",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "23df4798-9842-474a-af51-11933edddd26",
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (responseCode.code === 200){",
+                      "    var data = JSON.parse(responseBody);",
+                      "    ",
+                      "    ",
+                      "}"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "750ee263-4e70-4448-90fc-ea84bb31cc6a",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "message",
+                      "value": "Message with attachment test!",
+                      "description": "",
+                      "type": "text"
+                    },
+                    {
+                      "key": "files",
+                      "value": null,
+                      "description": "",
+                      "type": "file"
+                    }
+                  ]
+                },
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/conversations/{{hm_conversation_id}}/attachments"
+              },
+              "response": []
+            },
+            {
+              "_postman_id": "322677-b4bea4e2-61eb-4f37-9ac1-f0ab23845b85",
+              "name": "Post a Message in the specified Conversation Copy",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "2d9cff02-7f1f-43f1-add1-1390ef7dee50",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"body\": \"Hi!\"\n}"
+                },
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/conversations/{{hm_conversation_id}}/messages"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-55d62b74-6249-46dd-b8e3-09fdfcfd74b4",
+          "name": "Users",
+          "description": "",
+          "item": [
+            {
+              "_postman_id": "322677-0f12d0f9-d9f4-471c-b59d-f62ce45fa61e",
+              "name": "https://api-prd.kpn.com/healthmessenger/v1/users",
+              "request": {
+                "auth": {
+                  "type": "oauth2",
+                  "oauth2": {
+                    "accessToken": "2d9cff02-7f1f-43f1-add1-1390ef7dee50",
+                    "tokenType": "Bearer",
+                    "addTokenTo": "header"
+                  }
+                },
+                "method": "GET",
+                "header": [],
+                "body": {},
+                "url": "https://api-prd.kpn.com/healthmessenger/v1/users"
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "_postman_id": "322677-df746be6-5c63-4a60-8604-9323a0fad309",
+          "name": "https://api-prd.kpn.com/healthmessenger/v1/me",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": {
+                "accessToken": "750ee263-4e70-4448-90fc-ea84bb31cc6a",
+                "tokenType": "Bearer",
+                "addTokenTo": "header"
+              }
+            },
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "https://api-prd.kpn.com/healthmessenger/v1/me/coworkers"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "322677-7e6cee10-5517-417b-96cd-d01af10618a8",
+      "name": "Demo",
+      "description": null,
+      "item": [
+        {
+          "_postman_id": "322677-caf0f74e-9b19-41c2-a8db-e638c5f4ee2f",
+          "name": "http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598e",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"message\":\"OK\"\t\n}"
+            },
+            "url": "http://webhook.site/7bffced0-76a5-478c-abf4-38993a51598e"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "_postman_id": "322677-45fd24d1-617d-4053-8f09-56b984efa839",
+      "name": "Contexta",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "322677-ba7942f5-9378-4c85-8495-db8d63047d32",
+          "name": "https://speechapi.contextaservices.com/decoders",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Basic {{contexta_api_key}}"
+              }
+            ],
+            "body": {},
+            "url": "https://speechapi.contextaservices.com/decoders"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-9118a45a-024d-430d-9129-799fcc46b25e",
+          "name": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200){",
+                  "    var data = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"kpn_access_token\", data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "type": "text",
+                  "value": "{{kpn_client_id}}"
+                },
+                {
+                  "key": "client_secret",
+                  "type": "text",
+                  "value": "{{kpn_client_secret}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+              "protocol": "https",
+              "host": [
+                "api-prd",
+                "kpn",
+                "com"
+              ],
+              "path": [
+                "oauth",
+                "client_credential",
+                "accesstoken"
+              ],
+              "query": [
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-c6809d13-fc02-491b-b988-b9d2879bdc93",
+          "name": "ListDecoders",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{contexta_access_token}}"
+              }
+            ],
+            "body": {},
+            "url": "https://api-prd.kpn.com/communication/contexta/speech/v1/decoders"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-f7702a0c-3647-4e6b-8171-57bd7227a4db",
+          "name": "CreateTranscripts",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200){",
+                  "    var data = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"contexta_transcriptId\", data.data.transcriptId);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{contexta_access_token}}"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "callbackurl",
+                  "value": "http://webhook.site/eea4f1f6-97f3-46f1-aed2-f8fabd5f631a",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "data",
+                  "value": "{\"message\" :\"OK\"}",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "audio",
+                  "description": "",
+                  "type": "file",
+                  "src": {
+                    "0": {
+                      "name": "sample.mp3",
+                      "lastModified": 1529582139735,
+                      "lastModifiedDate": "2018-06-21T11:55:39.735Z",
+                      "webkitRelativePath": "",
+                      "size": 972990,
+                      "type": "audio/mp3"
+                    },
+                    "length": 1
+                  }
+                },
+                {
+                  "key": "decoder",
+                  "value": "5b16b7c7fb6fc02bcb8ec28e",
+                  "description": "",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": "https://api-prd.kpn.com/communication/contexta/speech/v1/transcripts/create"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-0fe175db-f441-aacf-9b90-976feda63dfd",
+          "name": "GetTranscriptsStatus",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{contexta_access_token}}"
+              }
+            ],
+            "body": {},
+            "url": "https://api-prd.kpn.com/communication/contexta/speech/v1/transcripts/status/{{contexta_transcriptId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-7fd37499-a255-edb6-35d0-8d3a01dcbb1e",
+          "name": "GetTranscriptsXml",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{contexta_access_token}}"
+              }
+            ],
+            "body": {},
+            "url": "https://api-prd.kpn.com/communication/contexta/speech/v1/transcripts/show/{{contexta_transcriptId}}"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "322677-67e0c9ee-5c93-86c5-422e-567eaa108302",
+          "name": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (responseCode.code === 200){",
+                  "    var data = JSON.parse(responseBody);",
+                  "    postman.setEnvironmentVariable(\"kpn_access_token\", data.access_token);",
+                  "}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "client_id",
+                  "type": "text",
+                  "value": "{{contexta_client_id}}"
+                },
+                {
+                  "key": "client_secret",
+                  "type": "text",
+                  "value": "{{contexta_client_secret}}"
+                }
+              ]
+            },
+            "url": {
+              "raw": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+              "protocol": "https",
+              "host": [
+                "api-prd",
+                "kpn",
+                "com"
+              ],
+              "path": [
+                "oauth",
+                "client_credential",
+                "accesstoken"
+              ],
+              "query": [
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials",
+                  "equals": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "noauth"
+      }
+    }
+  ]
+}
