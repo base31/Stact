@@ -620,13 +620,13 @@
           "item": [
             {
               "_postman_id": "322677-ac42c218-1f3e-f096-b541-77992486b2ae",
-              "name": "https://api-prd.kpn.com/messaging/sms-kpn",
+              "name": "https://{{base_url}}/communication/kpn/sms/send",
               "request": {
                 "method": "POST",
                 "header": [
                   {
                     "key": "Authorization",
-                    "value": "BearerToken {{kpn_access_token}}"
+                    "value": "Bearer {{kpn_access_token}}"
                   },
                   {
                     "key": "Content-Type",
@@ -637,7 +637,7 @@
                   "mode": "raw",
                   "raw": "{\r\n   \"messages\": [\r\n       {\r\n           \"content\": \"Greetings from Apigee!\",\r\n           \"mobile_number\": \"+31624577981\"\r\n       }\r\n   ],\r\n  \"sender\": \"KPN\"\r\n}\r\n"
                 },
-                "url": "https://api-prd.kpn.com/messaging/sms-kpn/v1/send"
+                "url": "https://{{base_url}}/communication/kpn/sms/send"
               },
               "response": []
             }
@@ -722,7 +722,7 @@
         },
         {
           "_postman_id": "322677-559e83bb-e57e-db78-4da0-e38cf2e79fd2",
-          "name": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+          "name": "https://{{base_url}}/oauth/client_credential/accesstoken?grant_type=client_credentials",
           "event": [
             {
               "listen": "test",
@@ -763,12 +763,10 @@
               ]
             },
             "url": {
-              "raw": "https://api-prd.kpn.com/oauth/client_credential/accesstoken?grant_type=client_credentials",
+              "raw": "https://{{base_url}}/oauth/client_credential/accesstoken?grant_type=client_credentials",
               "protocol": "https",
               "host": [
-                "api-prd",
-                "kpn",
-                "com"
+                "{{base_url}}"
               ],
               "path": [
                 "oauth",
