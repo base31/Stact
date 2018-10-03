@@ -668,7 +668,7 @@
                   "mode": "raw",
                   "raw": "{\r\n  \"data\": [{\r\n    \"ext\" : \"jpg\",\r\n    \"path\" : \"http://www.babushahi.com/upload/image/Train-Engine_HKM.jpg\"\r\n  },{\r\n    \"ext\" : \"jpg\",\r\n    \"path\" : \"https://upload.wikimedia.org/wikipedia/commons/0/0e/Atlanta_Zoo_Panda.jpg\"\r\n  }]\r\n}"
                 },
-                "url": "https://api-prd.kpn.com/ai/image-classifier/v1/classify"
+                "url": "https://{{base_url}}/ai-machine-learning/kpn/image-classifier/classify"
               },
               "response": []
             }
