@@ -640,6 +640,29 @@
                 "url": "https://{{base_url}}/communication/kpn/sms/send"
               },
               "response": []
+            },
+            {
+              "_postman_id": "322677-8645a555-2c63-4f9c-a3e4-8ee7ee73a452",
+              "name": "https://{{base_url}}/messaging/sms-kpn/v1/send",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{kpn_access_token}}"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"messages\": [\r\n       {\r\n           \"content\": \"Greetings from Apigee!\",\r\n           \"mobile_number\": \"+31624577981\"\r\n       }\r\n   ],\r\n  \"sender\": \"KPN\"\r\n}\r\n"
+                },
+                "url": "https://{{base_url}}/messaging/sms-kpn/v1/send"
+              },
+              "response": []
             }
           ],
           "_postman_isSubFolder": true
